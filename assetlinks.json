@@ -1,0 +1,25 @@
+[
+  {
+    "relation" : [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target" : {
+      "namespace" : "web",
+      "site" : "https://tucur-prg.github.com"
+    }
+  },
+  {
+    "relation" : [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target" : {
+      "namespace" : "android_app",
+      "package_name" : "com.authn",
+      "sha256_cert_fingerprints" : [
+         "06:F6:20:5D:58:0C:82:74:DA:28:7C:95:E6:FD:C8:ED:5F:4D:41:07:FB:28:A8:AE:06:2E:EA:86:AA:8F:2A:25"
+      ]
+    }
+  }
+]
