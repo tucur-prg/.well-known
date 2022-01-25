@@ -58,7 +58,7 @@ function setEvent(str) {
 // --------
 function regist() {
   setEvent('regist start.');
-  fetch('https://192.168.10.5:8080/regist')
+  fetch('https://localhost:8080/regist')
   .then((res) => {
     if (res.ok) {
       return res.json()
@@ -75,7 +75,7 @@ function regist() {
   }).then((PublicKeyCredential) => {
     setEvent('regist reqiest.');
 
-    $.post("https://192.168.10.5:8080/regist", {
+    $.post("https://localhost:8080/regist", {
       id: PublicKeyCredential.id,
       attestationObject: b64encode(PublicKeyCredential.response.attestationObject),
       clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
@@ -92,7 +92,7 @@ function regist() {
 
 function auth() {
   setEvent('auth start.');
-  fetch('https://192.168.10.5:8080/auth')
+  fetch('https://localhost:8080/auth')
   .then((res) => {
     if (res.ok) {
       return res.json()
@@ -109,7 +109,7 @@ function auth() {
   }).then((PublicKeyCredential) => {
     setEvent('auth reqiest.');
 
-    $.post("https://192.168.10.5:8080/auth", {
+    $.post("https://localhost:8080/auth", {
       id: b64encode(PublicKeyCredential.rawId),
       authenticatorData: b64encode(PublicKeyCredential.response.authenticatorData),
       clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
