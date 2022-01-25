@@ -16,9 +16,12 @@
 </head>
 
 <body>
-  <button onClick="regist1();">Regist Request 1</button>
-  <button onClick="regist2();">Regist Request 2</button>
+  <button onClick="regist();">Regist Request</button>
   <button onClick="auth();">Auth Request</button>
+  <br>
+  <button onClick="ios_option();">iOS Regist Request 1</button>
+  <button onClick="ios_action();">iOS Regist Request 2</button>
+  <br>
   Chrome Addons: <a target="_blank" href="https://chrome.google.com/webstore/detail/virtual-authenticators-ta/gafbpmlmeiikmhkhiapjlfjgdioafmja?hl=ja">Virtual Authenticators Tab</a>
   <hr>
   <span id="support"></span><br>
@@ -61,7 +64,7 @@ function setEvent(str) {
 var globalOptions;
 
 // --------
-function regist1() {
+function regist() {
   setEvent('regist start.');
   fetch('https://' + domain + ':8080/regist')
   .then((res) => {
@@ -76,7 +79,6 @@ function regist1() {
   .then(CBOR.decode)
   .then((options) => {
     console.log(options)
-    globalOptions = options;
     return navigator.credentials.create(options)
   }).then((PublicKeyCredential) => {
     setEvent('regist reqiest.');
@@ -96,7 +98,25 @@ function regist1() {
   })
 }
 
-function regist2() {
+function ios_option() {
+  setEvent('regist start.');
+  fetch('https://' + domain + ':8080/regist')
+  .then((res) => {
+    if (res.ok) {
+      return res.json()
+    }
+    throw new Error('Error getting registration data!')
+  })
+  .then((res) => res['options'])
+  .then(b64decode)
+  .then(buffer)
+  .then(CBOR.decode)
+  .then((options) => {
+    console.log(options)
+    globalOptions = options;
+  })
+}
+function ios_action() {
   navigator.credentials.create(globalOptions)
     .then((PublicKeyCredential) => {
       setEvent('regist reqiest.');
