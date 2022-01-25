@@ -99,7 +99,7 @@ function regist() {
 }
 
 function ios_option() {
-  setEvent('regist start.');
+  setEvent('ios option start.');
   fetch('https://' + domain + ':8080/regist')
   .then((res) => {
     if (res.ok) {
@@ -114,12 +114,14 @@ function ios_option() {
   .then((options) => {
     console.log(options)
     globalOptions = options;
+    setEvent('ios option end.');
   })
 }
 function ios_action() {
+  setEvent('ios action start.');
   navigator.credentials.create(globalOptions)
     .then((PublicKeyCredential) => {
-      setEvent('regist reqiest.');
+      setEvent('ios action reqiest.');
 
       $.post('https://' + domain + ':8080/regist', {
         id: PublicKeyCredential.id,
@@ -127,12 +129,12 @@ function ios_action() {
         clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
       }, (res) => {
         console.log(res);
-        setEvent('regist success.');
+        setEvent('ios action success.');
       });
     }).catch((error) => {
       document.getElementById('error').innerText = error.message;
       console.log({error})
-      setEvent('regist error.');
+      setEvent('ios action error.');
     });
 }
 
