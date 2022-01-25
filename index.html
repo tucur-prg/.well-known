@@ -49,6 +49,8 @@ function b64decode(val) {
   return atob(val)
 }
 
+const domain = "10.0.2.2"
+
 document.getElementById('support').innerText = ('credentials' in navigator) ? 'Support' : 'UnSupport';
 
 function setEvent(str) {
@@ -58,7 +60,7 @@ function setEvent(str) {
 // --------
 function regist() {
   setEvent('regist start.');
-  fetch('https://localhost:8080/regist')
+  fetch('https://' + domain + ':8080/regist')
   .then((res) => {
     if (res.ok) {
       return res.json()
@@ -75,7 +77,7 @@ function regist() {
   }).then((PublicKeyCredential) => {
     setEvent('regist reqiest.');
 
-    $.post("https://localhost:8080/regist", {
+    $.post('https://' + domain + ':8080/regist', {
       id: PublicKeyCredential.id,
       attestationObject: b64encode(PublicKeyCredential.response.attestationObject),
       clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
@@ -92,7 +94,7 @@ function regist() {
 
 function auth() {
   setEvent('auth start.');
-  fetch('https://localhost:8080/auth')
+  fetch('https://' + domain + ':8080/auth')
   .then((res) => {
     if (res.ok) {
       return res.json()
@@ -109,7 +111,7 @@ function auth() {
   }).then((PublicKeyCredential) => {
     setEvent('auth reqiest.');
 
-    $.post("https://localhost:8080/auth", {
+    $.post('https://' + domain + ':8080/auth', {
       id: b64encode(PublicKeyCredential.rawId),
       authenticatorData: b64encode(PublicKeyCredential.response.authenticatorData),
       clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
