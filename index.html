@@ -16,7 +16,8 @@
 </head>
 
 <body>
-  <button onClick="regist();">Regist Request</button>
+  <button onClick="regist1();">Regist Request 1</button>
+  <button onClick="regist2();">Regist Request 2</button>
   <button onClick="auth();">Auth Request</button>
   Chrome Addons: <a target="_blank" href="https://chrome.google.com/webstore/detail/virtual-authenticators-ta/gafbpmlmeiikmhkhiapjlfjgdioafmja?hl=ja">Virtual Authenticators Tab</a>
   <hr>
@@ -57,8 +58,10 @@ function setEvent(str) {
   document.getElementById('event').innerText = "Event: " + str;
 }
 
+var globalOptions;
+
 // --------
-function regist() {
+function regist1() {
   setEvent('regist start.');
   fetch('https://' + domain + ':8080/regist')
   .then((res) => {
@@ -73,6 +76,7 @@ function regist() {
   .then(CBOR.decode)
   .then((options) => {
     console.log(options)
+    globalOptions = options;
     return navigator.credentials.create(options)
   }).then((PublicKeyCredential) => {
     setEvent('regist reqiest.');
@@ -90,6 +94,26 @@ function regist() {
     console.log({error})
     setEvent('regist error.');
   })
+}
+
+function regist2() {
+  navigator.credentials.create(globalOptions)
+    .then((PublicKeyCredential) => {
+      setEvent('regist reqiest.');
+
+      $.post('https://' + domain + ':8080/regist', {
+        id: PublicKeyCredential.id,
+        attestationObject: b64encode(PublicKeyCredential.response.attestationObject),
+        clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
+      }, (res) => {
+        console.log(res);
+        setEvent('regist success.');
+      });
+    }).catch((error) => {
+      document.getElementById('error').innerText = error.message;
+      console.log({error})
+      setEvent('regist error.');
+    });
 }
 
 function auth() {
