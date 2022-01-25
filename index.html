@@ -117,7 +117,7 @@ function ios_option() {
     setEvent('ios option end.');
   })
 }
-document.getElementById('action').addEventListener('click', async () => {
+document.getElementById('action').addEventListener('touchstart', async () => {
   setEvent('ios action start.');
   const PublicKeyCredential = await navigator.credentials.create(globalOptions);
   console.log(PublicKeyCredential);
