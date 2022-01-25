@@ -20,7 +20,7 @@
   <button onClick="auth();">Auth Request</button>
   <br>
   <button onClick="ios_option();">iOS Regist Request 1</button>
-  <button onClick="ios_action();">iOS Regist Request 2</button>
+  <button id="action">iOS Regist Request 2</button>
   <br>
   Chrome Addons: <a target="_blank" href="https://chrome.google.com/webstore/detail/virtual-authenticators-ta/gafbpmlmeiikmhkhiapjlfjgdioafmja?hl=ja">Virtual Authenticators Tab</a>
   <hr>
@@ -117,7 +117,7 @@ function ios_option() {
     setEvent('ios option end.');
   })
 }
-function ios_action() {
+document.getElementById('action').addEventListener('click', () => {
   setEvent('ios action start.');
   navigator.credentials.create(globalOptions)
     .then((PublicKeyCredential) => {
