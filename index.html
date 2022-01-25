@@ -49,7 +49,7 @@ function b64decode(val) {
   return atob(val)
 }
 
-const domain = "10.0.2.2"
+const domain = navigator.userAgent.search(/android/i) > 0 ? "10.0.2.2" : "localhost"
 
 document.getElementById('support').innerText = ('credentials' in navigator) ? 'Support' : 'UnSupport';
 
