@@ -61,7 +61,36 @@ function setEvent(str) {
   document.getElementById('event').innerText = "Event: " + str;
 }
 
-var globalOptions;
+var globalOptions = {
+  publicKey: {
+    rp: {
+      id: 'tucur-prg.github.io',
+      name: 'WebAuthn Test',
+    },
+    user: {
+      id: buffer('default_user'),
+      name: 'webauthn@example.com',
+      displayName: 'Default User',
+    },
+    attestation: 'direct',
+    pubKeyCredParams: [
+      {
+        type: 'public-key',
+        alg: -7,
+      },
+      {
+        type: 'public-key',
+        alg: -257
+      },
+    ],
+    challenge: buffer('my_challenge.my_challenge'),
+    authenticatorSelection: {
+      userVerification: 'required',
+      authenticatorAttachment: 'platform',
+      requireResidentKey: true,
+    },
+  }
+};
 
 // --------
 function regist() {
