@@ -18,7 +18,7 @@
 <body>
   <button onClick="regist();">Regist Request</button>
   <button onClick="auth();">Auth Request</button>
-  <br>
+  <br><br>
   <!--
   <button onClick="ios_option();">iOS Regist Request 1</button>
   <button id="action">iOS Regist Request 2</button>
@@ -97,7 +97,7 @@ var globalOptions = {
 // --------
 function regist() {
   setEvent('regist start.');
-  fetch('https://' + domain + ':8080/regist', { params: { username: 'hogehgoe' } })
+  fetch('https://' + domain + ':8080/regist?username=hogehoge')
   .then((res) => {
     if (res.ok) {
       return res.json()
@@ -175,7 +175,7 @@ document.getElementById('action').addEventListener('click', async () => {
 
 function auth() {
   setEvent('auth start.');
-  fetch('https://' + domain + ':8080/auth', { params: { username: 'hogehoge' }})
+  fetch('https://' + domain + ':8080/auth?username=hogehoge')
   .then((res) => {
     if (res.ok) {
       return res.json()
