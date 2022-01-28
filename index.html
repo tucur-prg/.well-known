@@ -95,7 +95,7 @@ var globalOptions = {
 // --------
 function regist() {
   setEvent('regist start.');
-  fetch('https://' + domain + ':8080/regist')
+  fetch('https://' + domain + ':8080/regist', { params: { username: 'hogehgoe' } })
   .then((res) => {
     if (res.ok) {
       return res.json()
@@ -113,6 +113,7 @@ function regist() {
     setEvent('regist reqiest.');
 
     $.post('https://' + domain + ':8080/regist', {
+      username: 'hogehoge',
       id: PublicKeyCredential.id,
       attestationObject: b64encode(PublicKeyCredential.response.attestationObject),
       clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
@@ -172,7 +173,7 @@ document.getElementById('action').addEventListener('click', async () => {
 
 function auth() {
   setEvent('auth start.');
-  fetch('https://' + domain + ':8080/auth')
+  fetch('https://' + domain + ':8080/auth', { params: { username: 'hogehoge' }})
   .then((res) => {
     if (res.ok) {
       return res.json()
@@ -190,6 +191,7 @@ function auth() {
     setEvent('auth reqiest.');
 
     $.post('https://' + domain + ':8080/auth', {
+      username: 'hogehoge',
       id: b64encode(PublicKeyCredential.rawId),
       authenticatorData: b64encode(PublicKeyCredential.response.authenticatorData),
       clientDataJSON: b64encode(PublicKeyCredential.response.clientDataJSON),
