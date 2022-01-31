@@ -18,12 +18,12 @@
 <body>
   <button onClick="regist();">Regist Request</button>
   <button onClick="auth();">Auth Request</button>
-  <br><br>
-  <!--
+  <hr>
+
   <button onClick="ios_option();">iOS Regist Request 1</button>
   <button id="action">iOS Regist Request 2</button>
-  <br>
--->
+  <hr>
+
   Chrome Addons: <a target="_blank" href="https://chrome.google.com/webstore/detail/virtual-authenticators-ta/gafbpmlmeiikmhkhiapjlfjgdioafmja?hl=ja">Virtual Authenticators Tab</a>
   <hr>
   <span id="support"></span><br>
@@ -66,7 +66,6 @@ function setEvent(str) {
 var globalOptions = {
   publicKey: {
     rp: {
-      id: 'tucur-prg.github.io',
       name: 'WebAuthn Test',
     },
     user: {
