@@ -150,8 +150,13 @@ function ios_option() {
 }
 document.getElementById('action').addEventListener('click', async () => {
   setEvent('ios action start.');
-  const PublicKeyCredential = await navigator.credentials.create(globalOptions);
-  console.log(PublicKeyCredential);
+  try {
+    const PublicKeyCredential = await navigator.credentials.create(globalOptions);
+    console.log(PublicKeyCredential);
+  } catch (error) {
+    console.log(error)
+    document.getElementById('error').innerText = error.message;
+  }
   /*
     .then((PublicKeyCredential) => {
       setEvent('ios action reqiest.');
