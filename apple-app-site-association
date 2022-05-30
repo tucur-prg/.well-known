@@ -1,7 +1,16 @@
 {
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "FAKETEAMID.org.reactjs.native.example.authn",
+                "paths": [ "/app/*", "/apps/*"]
+            }
+        ]
+    },
     "webcredentials": {
-      "apps": [
-        "FAKETEAMID.org.reactjs.native.example.authn"
-      ]
+        "apps": [
+            "FAKETEAMID.org.reactjs.native.example.authn"
+        ]
     }
 }
