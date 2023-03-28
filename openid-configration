@@ -5,6 +5,5 @@
   "userinfo_endpoint": "",
   "registration_endpoint": "",
   "revocation_endpoint": "",
-  "jwks_uri": "",
-  
+  "jwks_uri": ""
 }
