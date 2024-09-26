@@ -7,7 +7,7 @@
                 "paths": [ "/app/*", "/apps/*"]
             },
             {
-                "appID": "FAKETEAMID.com.example.flutterLifecycleExample",
+                "appID": "*.com.example.flutterLifecycleExample",
                 "paths": [ "/app/*"]
             }
         ]
