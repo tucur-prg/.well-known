@@ -5,6 +5,10 @@
             {
                 "appID": "9GFA8A95A5.org.reactjs.native.example.authn",
                 "paths": [ "/app/*", "/apps/*"]
+            },
+            {
+                "appID": "FAKETEAMID.com.example.flutterLifecycleExample",
+                "paths": [ "/app/*"]
             }
         ]
     },
