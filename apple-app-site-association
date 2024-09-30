@@ -9,6 +9,14 @@
             {
                 "appID": "9GFA8A95A5.com.example.flutterLifecycleExample",
                 "paths": [ "/app/*"]
+            },
+            {
+                "appID": "9GFA8A95A5.com.example.sampleServiceApp",
+                "paths": ["/sample-service-app/*"]
+            },
+            {
+                "appID": "9GFA8A95A5.com.example.identityAndAccessManagementExample",
+                "paths": ["/example-app/*"]
             }
         ]
     },
